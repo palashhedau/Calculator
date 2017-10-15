@@ -8,11 +8,12 @@ export function calc(a , b , action ){
 	  	action : action 
 	  })
 	  .then(function (response) {
-	  		console.log('Response for Add ' , parseInt(response.data.result)) ; 
-	  		dispatch({type : 'RESULT' , payload : response.data.result})
+	  		console.log('Response for Add ' , response.data) ; 
+	  		dispatch({type : 'RESULT' , payload : response.data })
 	  })
 	  .catch(function (error) {
-	  		console.log('Error occured while adding the numbers') ; 
+	  	console.log('Error Respomse' , error );
+	  		dispatch({type : 'RESULT_FAIL' , payload : 'Enter Valid Data '})
 	  })
 	}
 }

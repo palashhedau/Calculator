@@ -26,13 +26,24 @@ class Calculator extends Component{
 		})
 	}
 
-
+	
 
 	render(){
+		const styleText = {
+			textAlign : 'center'
+		}
+		const color = {
+			color :'red',
+			textAlign : 'center'
+		}
 		return(
 				
 				
 				<div className="container padd">
+					
+					
+					
+
 					<div className="col-sm-2 col-xs-2 col-lg-2 col-md-2">
 					
 					
@@ -41,7 +52,10 @@ class Calculator extends Component{
 					
 						<div  className="well  col-sm-8 col-xs-8 col-lg-8 col-md-8">
 						
-						
+							<div className="col-sm-12 col-xs-12 col-lg-12 col-md-12" style={styleText}>
+								<h3>Calculator</h3>
+							</div>
+
 							<div className="col-sm-12 col-xs-12 col-lg-12 col-md-12">
 								<div className = "col-sm-2 col-xs-2 col-lg-2 col-md-2">
 								</div>
@@ -95,6 +109,15 @@ class Calculator extends Component{
 								</div>
 								
 							</div>
+							<div className="col-sm-12 col-xs-12 col-lg-12 col-md-12" style={color}>
+								<div className = "col-sm-2 col-xs-2 col-lg-2 col-md-2">
+								</div>
+								<div className="col-sm-8 col-xs-8 col-lg-8 col-md-8 form-group">
+									<b>{this.props.error}</b>
+								</div>
+								<div className="col-sm-2 col-xs-2 col-lg-2 col-md-2">
+								</div>
+							</div>
 						
 						
 						</div>
@@ -132,7 +155,8 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state){
 	
 	return {
-		result : state.calcReducer.result 
+		result : state.calcReducer.result ,
+		error : state.calcReducer.error
 	}
 }
 

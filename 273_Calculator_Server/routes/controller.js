@@ -39,9 +39,19 @@ module.exports = function(app){
 	
 	app.post('/add' , function(req,res)
 	{
-		var result = parseInt(req.body.num1) + parseInt(req.body.num2) ; 
-		console.log('Result ' , result) ; 
-		res.status(201).json({result : result}) ;  
+		
+		
+		if(isNaN(parseInt(req.body.num1)) || isNaN(parseInt(req.body.num2))){
+			console.log('Invalid Number ')
+			res.status(400).json({error : 'Enter valid number'}) ;  
+		}else{
+
+			var result = parseInt(req.body.num1) + parseInt(req.body.num2) ; 
+			console.log('Result ' , result) ; 
+			res.status(201).json({result : result , error : ''}) ;  
+		}
+		
+		
 		
 	});
 	
@@ -49,9 +59,16 @@ module.exports = function(app){
 	
 	app.post('/sub' , function(req,res)
 	{
-		var result = parseInt(req.body.num1) - parseInt(req.body.num2) ; 
-		console.log('Result ' , result) ; 
-		res.status(201).json({result : result}) ;  
+		if(isNaN(parseInt(req.body.num1)) || isNaN(parseInt(req.body.num2))){
+			console.log('Invalid Number ')
+			res.status(400).json({error : 'Enter valid number'}) ;  
+		}else{
+
+			var result = parseInt(req.body.num1) - parseInt(req.body.num2) ; 
+			console.log('Result ' , result) ; 
+			res.status(201).json({result : result}) ;  
+		}
+		
 		
 	});
 	
@@ -59,18 +76,37 @@ module.exports = function(app){
 
 	app.post('/mul' , function(req,res)
 	{
-		var result = parseInt(req.body.num1) * parseInt(req.body.num2) ; 
-		console.log('Result ' , result) ; 
-		res.status(201).json({result : result}) ; 
+		if(isNaN(parseInt(req.body.num1)) || isNaN(parseInt(req.body.num2))){
+			console.log('Invalid Number ')
+			res.status(400).json({error : 'Enter valid number'}) ;  
+		}else{
+
+			var result = parseInt(req.body.num1) * parseInt(req.body.num2) ; 
+			console.log('Result ' , result) ; 
+			res.status(201).json({result : result}) ;  
+		}
+		
+		
+		
 	});
 	
 	
 
 	app.post('/divide' , function(req,res)
 	{
-		var result = parseInt(req.body.num1) / parseInt(req.body.num2) ; 
-		console.log('Result ' , result) ; 
-		res.status(201).json({result : result}) ; 
+		if(isNaN(parseInt(req.body.num1)) || isNaN(parseInt(req.body.num2))){
+			console.log('Invalid Number ')
+			res.status(400).json({error : 'Enter valid number'}) ;  
+		}else if (parseInt(req.body.num2 ) === 0 ){
+			res.status(400).json({result : '' , error : 'Second Number cannot be Zero'}) ;   
+		}
+		else{
+			var result = parseInt(req.body.num1) / parseInt(req.body.num2) ; 
+			console.log('Result ' , result) ; 
+			res.status(201).json({result : result , error : ''}) ;   
+		}
+		
+		
 	});
 	
 };

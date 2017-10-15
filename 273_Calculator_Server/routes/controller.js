@@ -98,7 +98,7 @@ module.exports = function(app){
 			console.log('Invalid Number ')
 			res.status(400).json({error : 'Enter valid number'}) ;  
 		}else if (parseInt(req.body.num2 ) === 0 ){
-			res.status(400).json({result : '' , error : 'Second Number cannot be Zero'}) ;   
+			res.status(201).json({result : 0 , error : 'Second Number cannot be Zero'}) ;   
 		}
 		else{
 			var result = parseInt(req.body.num1) / parseInt(req.body.num2) ; 
